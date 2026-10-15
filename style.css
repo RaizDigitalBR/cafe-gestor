@@ -1587,7 +1587,7 @@ input.campo-busca[type="text"] {
 
 @media (min-width: 901px) {
 
-    body:has(.sidebar-desktop) {
+    body.tem-sidebar {
         display: grid;
         grid-template-columns: 250px 1fr;
         grid-template-rows: auto 1fr;
@@ -1722,7 +1722,7 @@ input.campo-busca[type="text"] {
         background-color: rgba(0, 0, 0, 0.35);
     }
 
-    body:has(.sidebar-desktop) > main {
+    body.tem-sidebar > main {
         grid-area: main;
         max-width: none;
         margin: 0;
@@ -1733,7 +1733,7 @@ input.campo-busca[type="text"] {
        quantas colunas cabem (o que sobrava espaço vazio quando o total de
        cards não era múltiplo do que coubesse por linha), fixa 3 colunas.
        Com os 6 cards de hoje fecha certinho em 2 linhas de 3. */
-    body:has(.sidebar-desktop) .display-painel {
+    body.tem-sidebar .display-painel {
         grid-template-columns: repeat(3, 1fr);
         max-width: 1100px;
         margin: 0;

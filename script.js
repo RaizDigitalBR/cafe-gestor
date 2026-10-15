@@ -31,7 +31,11 @@ function formatarSacas(valor) {
 }
 
 async function carregarDadosUsuario(dados) {
-  const nome = dados.dados.nome || "";
+  // Protegido com "?." igual as outras paginas (vendas.js, despesas.js, etc.).
+  // Antes essa linha era "dados.dados.nome" sem protecao: se o documento do
+  // usuario no Firestore viesse sem o campo "dados" preenchido no momento da
+  // leitura, isso quebrava e travava o carregamento do nome so nessa pagina.
+  const nome = dados?.dados?.nome || "";
 
   // Preenche a topbar (desktop) e o drawer (celular) : função compartilhada
   // em acesso.js, usada em todas as páginas do site.
@@ -147,11 +151,11 @@ async function carregarResumoFinanceiro(user) {
     if (!resultado) return;
 
     // Acessa o objeto que você mostrou no print do console
-    const infoUsuario = resultado.dados; 
-    
+    const infoUsuario = resultado.dados;
+
     // OPERADOR LÓGICO: Se o plano for igual a 'basico', esconde o que é avançado
     if (infoUsuario && infoUsuario.acesso && infoUsuario.acesso.plano === "basico") {
-      
+
       esconderAbasRestritas();
     } else {
     }

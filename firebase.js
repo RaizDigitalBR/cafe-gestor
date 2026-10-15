@@ -21,3 +21,18 @@ const app = initializeApp(firebaseConfig);
 // EXPORTAR PARA OUTROS ARQUIVOS
 export const db = getFirestore(app);
 export const auth = getAuth(app);
+
+// PEDE ARMAZENAMENTO PERSISTENTE AO NAVEGADOR.
+// Em Android, principalmente em aparelho com pouco espaço, o Chrome pode
+// limpar sozinho os dados (sessão de login incluída) de um PWA instalado
+// que não está marcado como "persistente". Isso é candidato forte pra
+// explicar o "desloga sozinho" relatado pelos produtores. Essa chamada é
+// só um pedido, o navegador pode negar, mas não custa nada pedir e não
+// quebra nada se não for suportado.
+if (typeof navigator !== "undefined" && navigator.storage && navigator.storage.persist) {
+  navigator.storage.persist().then((concedido) => {
+    console.log(concedido ? "Armazenamento persistente concedido." : "Armazenamento persistente negado pelo navegador.");
+  }).catch(() => {
+    // Ignora silenciosamente em navegadores sem suporte.
+  });
+}
