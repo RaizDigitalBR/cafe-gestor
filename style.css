@@ -1585,6 +1585,46 @@ input.campo-busca[type="text"] {
     opacity: 0.95;
 }
 
+/* Linha do título no topbar do celular + botão "?" de ajuda do lado.
+   Bug encontrado: o botão "?" só existia dentro de .topbar-desktop, que
+   fica "display: none" abaixo de 901px — ou seja, nunca aparecia em
+   celular nenhum. Agora o título mobile vem dentro desse grupo, com o
+   botão "?" ao lado, igual já funciona no desktop. */
+.topbar-mobile-titulo-grupo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    margin-top: 0.6rem;
+}
+.topbar-mobile-titulo-grupo .topbar-mobile-titulo {
+    margin-top: 0;
+}
+
+/* Botão "?" de ajuda ao lado do título de cada página : abre o tour
+   guiado explicando rapidinho pra que serve cada campo/opção daquela
+   tela. Fica FORA de qualquer @media de propósito, pra funcionar tanto
+   no topbar mobile quanto no desktop. */
+.btn-ajuda-topbar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    font-weight: bold;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: 0.2s ease;
+    flex-shrink: 0;
+}
+.btn-ajuda-topbar:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
 /* ── Tour guiado de ajuda (passo a passo, estilo spotlight) ──────────────────
    Fica FORA de qualquer @media de propósito: o tour tem que funcionar tanto
    no celular quanto no desktop, e o erro anterior (bug do botão "Concluir"
@@ -1782,27 +1822,6 @@ input.campo-busca[type="text"] {
         color: #8fd9c9;
     }
 
-    /* Botão "?" de ajuda ao lado do título de cada página : abre um modal
-       explicando rapidinho pra que serve cada campo/opção daquela tela. */
-    .btn-ajuda-topbar {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
-        background-color: rgba(255, 255, 255, 0.15);
-        color: #fff;
-        border: 1px solid rgba(255, 255, 255, 0.4);
-        font-weight: bold;
-        font-size: 0.95rem;
-        cursor: pointer;
-        transition: 0.2s ease;
-        flex-shrink: 0;
-    }
-    .btn-ajuda-topbar:hover {
-        background-color: rgba(255, 255, 255, 0.3);
-    }
     .modal-ajuda-lista {
         text-align: left;
         margin: 0.8rem 0;

@@ -8,7 +8,7 @@
     <link rel="apple-touch-icon" href="./img/logo-192.png">
     <meta name="theme-color" content="#2d4a2b">
     <title>Gerenciamento de Despesas</title>
-    <link rel="stylesheet" href="style.css?v=1.12">
+    <link rel="stylesheet" href="style.css?v=1.13">
     <script type="module" src="despesas.js?v=1.10"></script>
     <script type="module" src="menu.js?v=1.7"></script>
     <script type="module" src="tour.js?v=1.1"></script>
@@ -24,7 +24,10 @@
                 CaféGestor
             </div>
         </div>
-        <h2 class="topbar-mobile-titulo">Gerenciamento de Despesas</h2>
+        <div class="topbar-mobile-titulo-grupo">
+            <h2 class="topbar-mobile-titulo">Gerenciamento de Despesas</h2>
+            <button type="button" class="btn-ajuda-topbar" onclick="iniciarTourDespesas()" aria-label="Ajuda">?</button>
+        </div>
     </header>
 
     <div class="overlay-menu-mobile" onclick="fecharMenuMobile()"></div>
