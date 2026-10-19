@@ -66,6 +66,79 @@ window.iniciarTourEstoque = function () {
   window.iniciarTour(PASSOS_TOUR_ESTOQUE);
 };
 
+// ── Tour dedicado da TELA PRINCIPAL do celular (mostra só os botões de
+// ação; os campos ficam dentro de cada modal). No desktop o "?" do
+// topbar continua chamando iniciarTourEstoque() normal.
+const PASSOS_TOUR_ESTOQUE_PRINCIPAL = [
+  {
+    seletores: [".secao-acoes-mobile"],
+    titulo: "Gerenciamento de Estoque",
+    texto: "Aqui você cadastra lotes de café guardado. Toque em um dos botões abaixo."
+  },
+  {
+    seletores: ["#btn-abrir-cadastro-lote"],
+    titulo: "Cadastrar Lote",
+    texto: "Toque aqui pra cadastrar um lote novo."
+  },
+  {
+    seletores: ["#btn-abrir-ver-estoque"],
+    titulo: "Ver Estoque",
+    texto: "Toque aqui pra ver, editar ou excluir os lotes que você já tem em estoque."
+  }
+];
+window.iniciarTourEstoquePrincipal = function () {
+  window.iniciarTour(PASSOS_TOUR_ESTOQUE_PRINCIPAL);
+};
+
+// ── Tour dedicado SÓ do modal "Cadastrar Lote" (celular) ────────────────────
+const PASSOS_TOUR_ESTOQUE_CADASTRO = [
+  {
+    seletores: ["#modal-lote .modal-box"],
+    titulo: "Cadastrar Lote",
+    texto: "Aqui você cadastra um lote de café guardado. Vamos passar pelos campos."
+  },
+  {
+    seletores: ["#nome-lote"],
+    titulo: "Identificação do Lote",
+    texto: "Um nome pra identificar esse lote de café guardado."
+  },
+  {
+    seletores: ["#quantidade-lote"],
+    titulo: "Quantidade (sacas)",
+    texto: "Quantas sacas tem nesse lote."
+  },
+  {
+    seletores: ["#anotacoes-lote"],
+    titulo: "Anotações",
+    texto: "Espaço opcional pra peneira, qualidade, safra, etc."
+  },
+  {
+    seletores: ["#btn-salvar-lote"],
+    titulo: "Cadastrar Lote",
+    texto: "Depois de preencher os campos, toque aqui pra salvar o lote."
+  }
+];
+window.iniciarTourEstoqueCadastro = function () {
+  window.iniciarTour(PASSOS_TOUR_ESTOQUE_CADASTRO);
+};
+
+// ── Tour dedicado do modal "Ver Estoque" (celular) ───────────────────────────
+const PASSOS_TOUR_ESTOQUE_VER = [
+  {
+    seletores: ["#pesquisa-lote"],
+    titulo: "Buscar Lote",
+    texto: "Use essa busca pra encontrar rápido um lote já cadastrado."
+  },
+  {
+    seletores: ["#lista-estoque"],
+    titulo: "Lotes em Estoque",
+    texto: "Aqui aparecem todos os lotes cadastrados. Toque num deles pra editar ou excluir."
+  }
+];
+window.iniciarTourEstoqueVer = function () {
+  window.iniciarTour(PASSOS_TOUR_ESTOQUE_VER);
+};
+
 window.fecharModalLote = function() {
   window.fecharModal("modal-lote");
   limparFormulario();

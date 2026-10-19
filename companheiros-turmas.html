@@ -9,7 +9,7 @@
     <meta name="theme-color" content="#2d4a2b">
     <title>Gerenciamento de Turmas</title>
     <link rel="stylesheet" href="style.css?v=1.19">
-    <script type="module" src="companheiros-turmas.js?v=1.2"></script>
+    <script type="module" src="companheiros-turmas.js?v=1.4"></script>
     <script type="module" src="menu.js?v=1.7"></script>
     <script type="module" src="tour.js?v=1.4"></script>
 </head>
@@ -26,7 +26,7 @@
         </div>
         <div class="topbar-mobile-titulo-grupo">
             <h2 class="topbar-mobile-titulo">Gerenciamento de Turmas</h2>
-            <button type="button" class="btn-ajuda-topbar" onclick="iniciarTourCompanheirosTurmas()" aria-label="Ajuda">?</button>
+            <button type="button" class="btn-ajuda-topbar" onclick="iniciarTourCompanheirosTurmasPrincipal()" aria-label="Ajuda">?</button>
         </div>
     </header>
 
@@ -99,8 +99,8 @@
         <!-- Botões antigos : só aparecem no celular. -->
         <section class="secao-acoes-mobile">
             <div class="acoes-principais">
-                <button class="btn-acao" onclick="abrirModal('modal-turma')">👥 Criar Turma</button>
-                <button class="btn-acao marrom" onclick="abrirModal('modal-ver-turmas')">🗂️ Ver Turmas</button>
+                <button id="btn-abrir-criar-turma" class="btn-acao" onclick="abrirModal('modal-turma')">👥 Criar Turma</button>
+                <button id="btn-abrir-ver-turmas" class="btn-acao marrom" onclick="abrirModal('modal-ver-turmas')">🗂️ Ver Turmas</button>
             </div>
         </section>
 
@@ -151,13 +151,16 @@
     <div class="modal-overlay" id="modal-turma">
         <div class="modal-box">
             <button class="modal-fechar" onclick="fecharModal('modal-turma')">✕</button>
-            <h3>👥 Criar Turma</h3>
+            <div class="modal-titulo-grupo">
+                <h3>👥 Criar Turma</h3>
+                <button type="button" class="btn-ajuda-modal" onclick="iniciarTourCompanheirosTurmasCadastro()" aria-label="Ajuda">?</button>
+            </div>
             <form id="criar-turma-form">
                 <label for="nome-turma">Nome da turma:</label>
                 <input type="text" id="nome-turma" placeholder="Ex: Turma de Colheita A" required><br><br>
                 <label>Selecionar companheiros:</label>
                 <div class="checkbox-container" id="checkboxes-turma"></div>
-                <button type="submit">Criar Turma</button>
+                <button type="submit" id="btn-criar-turma">Criar Turma</button>
             </form>
         </div>
     </div>
@@ -166,7 +169,10 @@
     <div class="modal-overlay" id="modal-ver-turmas">
         <div class="modal-box">
             <button class="modal-fechar" onclick="fecharModal('modal-ver-turmas')">✕</button>
-            <h3>🗂️ Turmas Cadastradas</h3>
+            <div class="modal-titulo-grupo">
+                <h3>🗂️ Turmas Cadastradas</h3>
+                <button type="button" class="btn-ajuda-modal" onclick="iniciarTourCompanheirosTurmasVer()" aria-label="Ajuda">?</button>
+            </div>
             <div id="lista-turmas"><p>Nenhuma turma cadastrada.</p></div>
         </div>
     </div>

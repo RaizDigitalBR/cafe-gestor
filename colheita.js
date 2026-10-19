@@ -67,6 +67,79 @@ window.iniciarTourColheita = function () {
   window.iniciarTour(PASSOS_TOUR_COLHEITA);
 };
 
+// ── Tour dedicado da TELA PRINCIPAL do celular (mostra só os botões de
+// ação; os campos ficam dentro de cada modal). No desktop o "?" do
+// topbar continua chamando iniciarTourColheita() normal.
+const PASSOS_TOUR_COLHEITA_PRINCIPAL = [
+  {
+    seletores: [".secao-acoes-mobile"],
+    titulo: "Gerenciamento de Colheita",
+    texto: "Aqui você registra cada colheita feita na lavoura. Toque em um dos botões abaixo."
+  },
+  {
+    seletores: ["#btn-abrir-registrar-colheita"],
+    titulo: "Registrar Colheita",
+    texto: "Toque aqui pra registrar uma colheita nova."
+  },
+  {
+    seletores: ["#btn-abrir-ver-colheitas"],
+    titulo: "Ver Colheitas Registradas",
+    texto: "Toque aqui pra ver, editar ou excluir as colheitas que você já registrou."
+  }
+];
+window.iniciarTourColheitaPrincipal = function () {
+  window.iniciarTour(PASSOS_TOUR_COLHEITA_PRINCIPAL);
+};
+
+// ── Tour dedicado SÓ do modal "Registrar Colheita" (celular) ────────────────
+const PASSOS_TOUR_COLHEITA_CADASTRO = [
+  {
+    seletores: ["#modal-colheita .modal-box"],
+    titulo: "Registrar Colheita",
+    texto: "Aqui você registra uma colheita feita na lavoura. Vamos passar pelos campos."
+  },
+  {
+    seletores: ["#moita-colheita"],
+    titulo: "Moita",
+    texto: "Escolha de qual moita veio essa colheita. Cadastre moitas primeiro na página Moitas se a lista estiver vazia."
+  },
+  {
+    seletores: ["#data-colheita"],
+    titulo: "Data da Colheita",
+    texto: "O dia em que a colheita foi feita."
+  },
+  {
+    seletores: ["#quantidade-colhida"],
+    titulo: "Quantidade Colhida (kg)",
+    texto: "Quanto foi colhido, em quilos."
+  },
+  {
+    seletores: ["#btn-salvar-colheita"],
+    titulo: "Registrar Colheita",
+    texto: "Depois de preencher os campos, toque aqui pra salvar a colheita."
+  }
+];
+window.iniciarTourColheitaCadastro = function () {
+  window.iniciarTour(PASSOS_TOUR_COLHEITA_CADASTRO);
+};
+
+// ── Tour dedicado do modal "Ver Colheitas Registradas" (celular) ────────────
+const PASSOS_TOUR_COLHEITA_VER = [
+  {
+    seletores: ["#pesquisa-colheita"],
+    titulo: "Buscar Colheita",
+    texto: "Use essa busca pra encontrar rápido uma colheita já registrada, por moita."
+  },
+  {
+    seletores: ["#lista-colheitas"],
+    titulo: "Colheitas Registradas",
+    texto: "Aqui aparecem todas as colheitas já registradas. Toque numa delas pra editar ou excluir."
+  }
+];
+window.iniciarTourColheitaVer = function () {
+  window.iniciarTour(PASSOS_TOUR_COLHEITA_VER);
+};
+
 window.fecharModalColheita = function() {
   window.fecharModal("modal-colheita");
   limparFormulario();

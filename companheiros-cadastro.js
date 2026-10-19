@@ -43,6 +43,74 @@ window.iniciarTourCompanheirosCadastro = function () {
   window.iniciarTour(PASSOS_TOUR_COMPANHEIROS_CADASTRO);
 };
 
+// ── Tour dedicado da TELA PRINCIPAL do celular (mostra só os botões de
+// ação; os campos ficam dentro de cada modal). No desktop o "?" do
+// topbar continua chamando iniciarTourCompanheirosCadastro() normal.
+const PASSOS_TOUR_COMPANHEIROS_CADASTRO_PRINCIPAL = [
+  {
+    seletores: [".secao-acoes-mobile"],
+    titulo: "Cadastrar Companheiro",
+    texto: "Aqui você cadastra as pessoas que trabalham com você na lavoura. Toque em um dos botões abaixo."
+  },
+  {
+    seletores: ["#btn-abrir-cadastro-companheiro"],
+    titulo: "Cadastrar Companheiro",
+    texto: "Toque aqui pra cadastrar um companheiro novo."
+  },
+  {
+    seletores: ["#btn-abrir-ver-companheiros"],
+    titulo: "Ver Companheiros",
+    texto: "Toque aqui pra ver ou excluir os companheiros já cadastrados."
+  }
+];
+window.iniciarTourCompanheirosCadastroPrincipal = function () {
+  window.iniciarTour(PASSOS_TOUR_COMPANHEIROS_CADASTRO_PRINCIPAL);
+};
+
+// ── Tour dedicado SÓ do modal "Cadastrar Companheiro" (celular) ─────────────
+const PASSOS_TOUR_COMPANHEIROS_CADASTRO_MODAL = [
+  {
+    seletores: ["#modal-cadastro .modal-box"],
+    titulo: "Cadastrar Companheiro",
+    texto: "Aqui você cadastra uma pessoa que trabalha com você na lavoura. Vamos passar pelos campos."
+  },
+  {
+    seletores: ["#nome-companheiro"],
+    titulo: "Nome",
+    texto: "O nome da pessoa que trabalha com você."
+  },
+  {
+    seletores: ["#pix-companheiro"],
+    titulo: "Chave Pix",
+    texto: "Opcional, facilita na hora de registrar o pagamento depois."
+  },
+  {
+    seletores: ["#btn-salvar-companheiro"],
+    titulo: "Cadastrar Companheiro",
+    texto: "Depois de preencher os campos, toque aqui pra salvar o companheiro."
+  }
+];
+window.iniciarTourCompanheirosCadastroModal = function () {
+  window.iniciarTour(PASSOS_TOUR_COMPANHEIROS_CADASTRO_MODAL);
+};
+
+// ── Tour dedicado do modal "Ver Companheiros" (celular) ──────────────────────
+const PASSOS_TOUR_COMPANHEIROS_CADASTRO_VER = [
+  {
+    seletores: ["#pesquisa-companheiro"],
+    titulo: "Buscar Companheiro",
+    texto: "Use essa busca pra encontrar rápido um companheiro já cadastrado."
+  },
+  {
+    seletores: ["#lista-companheiros"],
+    titulo: "Companheiros Cadastrados",
+    texto: "Aqui aparecem todos os companheiros já cadastrados. Depois de cadastrado, um companheiro pode ser colocado em Turmas e ter trabalho registrado em \"Registrar Trabalho\"."
+  }
+];
+window.iniciarTourCompanheirosCadastroVer = function () {
+  window.iniciarTour(PASSOS_TOUR_COMPANHEIROS_CADASTRO_VER);
+};
+
 // ── Busca ─────────────────────────────────────────────────────────────────────
 window.filtrarCompanheiros = function () {
   const termo = document.getElementById("pesquisa-companheiro").value.trim().toLowerCase();

@@ -8,8 +8,8 @@
     <link rel="apple-touch-icon" href="./img/logo-192.png">
     <meta name="theme-color" content="#2d4a2b">
     <title>Gerenciamento de Despesas</title>
-    <link rel="stylesheet" href="style.css?v=1.19">
-    <script type="module" src="despesas.js?v=1.10"></script>
+    <link rel="stylesheet" href="style.css?v=1.20">
+    <script type="module" src="despesas.js?v=1.13"></script>
     <script type="module" src="menu.js?v=1.7"></script>
     <script type="module" src="tour.js?v=1.4"></script>
 </head>
@@ -26,7 +26,7 @@
         </div>
         <div class="topbar-mobile-titulo-grupo">
             <h2 class="topbar-mobile-titulo">Gerenciamento de Despesas</h2>
-            <button type="button" class="btn-ajuda-topbar" onclick="iniciarTourDespesas()" aria-label="Ajuda">?</button>
+            <button type="button" class="btn-ajuda-topbar" onclick="iniciarTourDespesasPrincipal()" aria-label="Ajuda">?</button>
         </div>
     </header>
 
@@ -99,8 +99,8 @@
         <!-- Botões antigos : só aparecem no celular. -->
         <section class="secao-acoes-mobile">
             <div class="acoes-principais">
-                <button class="btn-acao" onclick="abrirModal('modal-despesa')">💸 Cadastrar Despesa</button>
-                <button class="btn-acao marrom" onclick="abrirModal('modal-ver-despesas')">📋 Ver Despesas Registradas</button>
+                <button id="btn-abrir-cadastro-despesa" class="btn-acao" onclick="abrirModal('modal-despesa')">💸 Cadastrar Despesa</button>
+                <button id="btn-abrir-ver-despesas" class="btn-acao marrom" onclick="abrirModal('modal-ver-despesas')">📋 Ver Despesas Registradas</button>
             </div>
         </section>
 
@@ -179,19 +179,24 @@
     <div class="modal-overlay" id="modal-despesa">
         <div class="modal-box">
             <button class="modal-fechar" onclick="fecharModalDespesa()">✕</button>
-            <h3 id="titulo-modal-despesa">💸 Cadastrar Despesa</h3>
+            <div class="modal-titulo-grupo">
+                <h3 id="titulo-modal-despesa">💸 Cadastrar Despesa</h3>
+                <button type="button" class="btn-ajuda-modal" onclick="iniciarTourDespesasCadastro()" aria-label="Ajuda">?</button>
+            </div>
             <form id="gerenciamento-despesas-form">
                 <h3>Categoria da Despesa</h3>
-                <input type="radio" id="categoria-fertilizante" name="categoria-despesa" value="Fertilizante" required>
-                <label for="categoria-fertilizante">Fertilizantes</label><br>
-                <input type="radio" id="categoria-defensivo" name="categoria-despesa" value="Defensivo">
-                <label for="categoria-defensivo">Defensivo</label><br>
-                <input type="radio" id="categoria-herbicidas" name="categoria-despesa" value="Herbicidas">
-                <label for="categoria-herbicidas">Herbicidas</label><br>
-                <input type="radio" id="categoria-mao-de-obra" name="categoria-despesa" value="Mão de Obra">
-                <label for="categoria-mao-de-obra">Mão de Obra</label><br>
-                <input type="radio" id="categoria-outros" name="categoria-despesa" value="Outros">
-                <label for="categoria-outros">Outros</label><br><br>
+                <div id="grupo-categoria-despesa">
+                    <input type="radio" id="categoria-fertilizante" name="categoria-despesa" value="Fertilizante" required>
+                    <label for="categoria-fertilizante">Fertilizantes</label><br>
+                    <input type="radio" id="categoria-defensivo" name="categoria-despesa" value="Defensivo">
+                    <label for="categoria-defensivo">Defensivo</label><br>
+                    <input type="radio" id="categoria-herbicidas" name="categoria-despesa" value="Herbicidas">
+                    <label for="categoria-herbicidas">Herbicidas</label><br>
+                    <input type="radio" id="categoria-mao-de-obra" name="categoria-despesa" value="Mão de Obra">
+                    <label for="categoria-mao-de-obra">Mão de Obra</label><br>
+                    <input type="radio" id="categoria-outros" name="categoria-despesa" value="Outros">
+                    <label for="categoria-outros">Outros</label>
+                </div><br>
                 <label for="moita-despesa">Moita:</label>
                 <select id="moita-despesa" name="moita-despesa">
                     <option value="">Sem moita específica</option>
@@ -213,7 +218,10 @@
     <div class="modal-overlay" id="modal-ver-despesas">
         <div class="modal-box">
             <button class="modal-fechar" onclick="fecharModal('modal-ver-despesas')">✕</button>
-            <h3>📋 Despesas Registradas</h3>
+            <div class="modal-titulo-grupo">
+                <h3>📋 Despesas Registradas</h3>
+                <button type="button" class="btn-ajuda-modal" onclick="iniciarTourDespesasVer()" aria-label="Ajuda">?</button>
+            </div>
             <input type="text" id="pesquisa-despesa" class="campo-busca" placeholder="Pesquisar por categoria, moita ou descrição" oninput="filtrarDespesas()">
             <div id="lista-despesas"></div>
         </div>

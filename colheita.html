@@ -9,7 +9,7 @@
     <meta name="theme-color" content="#2d4a2b">
     <title>Gerenciamento de Colheita</title>
     <link rel="stylesheet" href="style.css?v=1.19">
-    <script type="module" src="colheita.js?v=1.10"></script>
+    <script type="module" src="colheita.js?v=1.12"></script>
     <script type="module" src="menu.js?v=1.7"></script>
     <script type="module" src="tour.js?v=1.4"></script>
 </head>
@@ -26,7 +26,7 @@
         </div>
         <div class="topbar-mobile-titulo-grupo">
             <h2 class="topbar-mobile-titulo">Gerenciamento de Colheita</h2>
-            <button type="button" class="btn-ajuda-topbar" onclick="iniciarTourColheita()" aria-label="Ajuda">?</button>
+            <button type="button" class="btn-ajuda-topbar" onclick="iniciarTourColheitaPrincipal()" aria-label="Ajuda">?</button>
         </div>
     </header>
 
@@ -99,8 +99,8 @@
         <!-- Botões antigos : só aparecem no celular. -->
         <section class="secao-acoes-mobile">
             <div class="acoes-principais">
-                <button class="btn-acao" onclick="abrirModal('modal-colheita')">🌾 Registrar Colheita</button>
-                <button class="btn-acao marrom" onclick="abrirModal('modal-ver-colheitas')">📋 Ver Colheitas Registradas</button>
+                <button id="btn-abrir-registrar-colheita" class="btn-acao" onclick="abrirModal('modal-colheita')">🌾 Registrar Colheita</button>
+                <button id="btn-abrir-ver-colheitas" class="btn-acao marrom" onclick="abrirModal('modal-ver-colheitas')">📋 Ver Colheitas Registradas</button>
             </div>
         </section>
 
@@ -163,7 +163,10 @@
     <div class="modal-overlay" id="modal-colheita">
         <div class="modal-box">
             <button class="modal-fechar" onclick="fecharModalColheita()">✕</button>
-            <h3 id="titulo-modal-colheita">🌾 Registrar Colheita</h3>
+            <div class="modal-titulo-grupo">
+                <h3 id="titulo-modal-colheita">🌾 Registrar Colheita</h3>
+                <button type="button" class="btn-ajuda-modal" onclick="iniciarTourColheitaCadastro()" aria-label="Ajuda">?</button>
+            </div>
             <form id="gerenciamento-colheita-form">
                 <label for="moita-colheita">Moita:</label>
                 <select id="moita-colheita" name="moita-colheita">
@@ -182,7 +185,10 @@
     <div class="modal-overlay" id="modal-ver-colheitas">
         <div class="modal-box">
             <button class="modal-fechar" onclick="fecharModal('modal-ver-colheitas')">✕</button>
-            <h3>📋 Colheitas Registradas</h3>
+            <div class="modal-titulo-grupo">
+                <h3>📋 Colheitas Registradas</h3>
+                <button type="button" class="btn-ajuda-modal" onclick="iniciarTourColheitaVer()" aria-label="Ajuda">?</button>
+            </div>
             <input type="text" id="pesquisa-colheita" class="campo-busca" placeholder="Pesquisar por moita" oninput="filtrarColheitas()">
             <div id="lista-colheitas"></div>
         </div>

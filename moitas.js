@@ -77,6 +77,107 @@ window.iniciarTourMoitas = function () {
   window.iniciarTour(PASSOS_TOUR_MOITAS);
 };
 
+// ── Tour dedicado da TELA PRINCIPAL do celular (mostra só os botões de
+// ação; os campos ficam dentro de cada modal). No desktop o "?" do
+// topbar continua chamando iniciarTourMoitas() normal, porque lá tudo
+// já aparece direto na tela, sem modal.
+const PASSOS_TOUR_MOITAS_PRINCIPAL = [
+  {
+    seletores: [".secao-acoes-mobile"],
+    titulo: "Gerenciamento de Moitas",
+    texto: "Aqui você cadastra as moitas (talhões/lotes de café) da sua lavoura. Toque em um dos botões abaixo."
+  },
+  {
+    seletores: ["#btn-abrir-cadastro-moita"],
+    titulo: "Cadastrar Moita",
+    texto: "Toque aqui pra cadastrar uma moita nova."
+  },
+  {
+    seletores: ["#btn-abrir-ver-moitas"],
+    titulo: "Ver Moitas Cadastradas",
+    texto: "Toque aqui pra ver, editar ou excluir as moitas que você já cadastrou."
+  },
+  {
+    seletores: ["#btn-abrir-relatorio-producao"],
+    titulo: "Relatório de Produção",
+    texto: "Toque aqui pra ver produção e financeiro por moita."
+  }
+];
+window.iniciarTourMoitasPrincipal = function () {
+  window.iniciarTour(PASSOS_TOUR_MOITAS_PRINCIPAL);
+};
+
+// ── Tour dedicado SÓ do modal "Cadastrar Moita" (celular) ───────────────────
+const PASSOS_TOUR_MOITAS_CADASTRO = [
+  {
+    seletores: ["#modal-moita .modal-box"],
+    titulo: "Cadastrar Moita",
+    texto: "Aqui você cadastra uma moita (talhão/lote de café) da sua lavoura. Vamos passar pelos campos."
+  },
+  {
+    seletores: ["#nome-moita"],
+    titulo: "Nome da Moita",
+    texto: "Um nome pra você identificar esse talhão/área, por exemplo \"Moita 1\" ou \"Fundo do terreno\"."
+  },
+  {
+    seletores: ["#area-moita"],
+    titulo: "Área (hectares)",
+    texto: "O tamanho dessa moita em hectares."
+  },
+  {
+    seletores: ["#quantidade-de-pes"],
+    titulo: "Quantidade de Pés",
+    texto: "Quantos pés de café tem nessa moita."
+  },
+  {
+    seletores: ["#tipo-de-cafe"],
+    titulo: "Tipo de Café",
+    texto: "A variedade plantada nessa moita."
+  },
+  {
+    seletores: ["#btn-salvar-moita"],
+    titulo: "Cadastrar Moita",
+    texto: "Depois de preencher os campos, toque aqui pra salvar a moita."
+  }
+];
+window.iniciarTourMoitasCadastro = function () {
+  window.iniciarTour(PASSOS_TOUR_MOITAS_CADASTRO);
+};
+
+// ── Tour dedicado do modal "Ver Moitas Cadastradas" (celular) ───────────────
+const PASSOS_TOUR_MOITAS_VER = [
+  {
+    seletores: ["#pesquisa-moita"],
+    titulo: "Buscar Moita",
+    texto: "Use essa busca pra encontrar rápido uma moita já cadastrada."
+  },
+  {
+    seletores: ["#lista-moitas"],
+    titulo: "Moitas Cadastradas",
+    texto: "Aqui aparecem todas as moitas já cadastradas. Toque numa delas pra editar ou excluir."
+  }
+];
+window.iniciarTourMoitasVer = function () {
+  window.iniciarTour(PASSOS_TOUR_MOITAS_VER);
+};
+
+// ── Tour dedicado do modal "Relatório de Produção" (celular) ────────────────
+const PASSOS_TOUR_MOITAS_RELATORIO = [
+  {
+    seletores: ["#pesquisa-relatorio"],
+    titulo: "Buscar no Relatório",
+    texto: "Use essa busca pra encontrar rápido uma moita específica no relatório."
+  },
+  {
+    seletores: ["#lista-producao"],
+    titulo: "Produção e Financeiro por Moita",
+    texto: "Aqui você vê, moita por moita, quanto foi colhido, quanto foi gasto, quanto foi vendido e o lucro de cada uma."
+  }
+];
+window.iniciarTourMoitasRelatorio = function () {
+  window.iniciarTour(PASSOS_TOUR_MOITAS_RELATORIO);
+};
+
 window.fecharModalMoita = function() {
   window.fecharModal("modal-moita");
   limparFormulario();

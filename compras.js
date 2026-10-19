@@ -75,6 +75,89 @@ window.iniciarTourCompras = function () {
   window.iniciarTour(PASSOS_TOUR_COMPRAS);
 };
 
+// ── Tour dedicado da TELA PRINCIPAL do celular (mostra só os botões de
+// ação; os campos ficam dentro de cada modal). No desktop o "?" do
+// topbar continua chamando iniciarTourCompras() normal.
+const PASSOS_TOUR_COMPRAS_PRINCIPAL = [
+  {
+    seletores: [".secao-acoes-mobile"],
+    titulo: "Gerenciamento de Compras",
+    texto: "Aqui você registra compras de café de terceiros. Toque em um dos botões abaixo."
+  },
+  {
+    seletores: ["#btn-abrir-registrar-compra"],
+    titulo: "Registrar Compra",
+    texto: "Toque aqui pra registrar uma compra nova. Toda compra gera automaticamente um lote correspondente no Estoque."
+  },
+  {
+    seletores: ["#btn-abrir-ver-compras"],
+    titulo: "Ver Compras Registradas",
+    texto: "Toque aqui pra ver, editar ou excluir as compras que você já registrou."
+  }
+];
+window.iniciarTourComprasPrincipal = function () {
+  window.iniciarTour(PASSOS_TOUR_COMPRAS_PRINCIPAL);
+};
+
+// ── Tour dedicado SÓ do modal "Registrar Compra" (celular) ──────────────────
+const PASSOS_TOUR_COMPRAS_CADASTRO = [
+  {
+    seletores: ["#modal-compra .modal-box"],
+    titulo: "Registrar Compra",
+    texto: "Aqui você registra uma compra de café de terceiros. Vamos passar pelos campos."
+  },
+  {
+    seletores: ["#fornecedor-compra"],
+    titulo: "Fornecedor",
+    texto: "De quem você comprou."
+  },
+  {
+    seletores: ["#data-compra"],
+    titulo: "Data da Compra",
+    texto: "O dia da compra."
+  },
+  {
+    seletores: ["#quantidade-comprada"],
+    titulo: "Quantidade (sacas)",
+    texto: "Quantas sacas foram compradas."
+  },
+  {
+    seletores: ["#preco-unitario-compra"],
+    titulo: "Preço por Saca",
+    texto: "O valor pago por cada saca."
+  },
+  {
+    seletores: ["#anotacoes-compra"],
+    titulo: "Anotações",
+    texto: "Espaço opcional pra detalhes como peneira ou qualidade."
+  },
+  {
+    seletores: ["#btn-salvar-compra"],
+    titulo: "Registrar Compra",
+    texto: "Depois de preencher os campos, toque aqui pra salvar a compra. Isso gera automaticamente um lote no Estoque."
+  }
+];
+window.iniciarTourComprasCadastro = function () {
+  window.iniciarTour(PASSOS_TOUR_COMPRAS_CADASTRO);
+};
+
+// ── Tour dedicado do modal "Ver Compras Registradas" (celular) ──────────────
+const PASSOS_TOUR_COMPRAS_VER = [
+  {
+    seletores: ["#pesquisa-compra"],
+    titulo: "Buscar Compra",
+    texto: "Use essa busca pra encontrar rápido uma compra já registrada, por fornecedor."
+  },
+  {
+    seletores: ["#lista-compras"],
+    titulo: "Compras Registradas",
+    texto: "Aqui aparecem todas as compras já registradas. Editar uma compra atualiza só o registro da compra, não o lote já gerado no Estoque."
+  }
+];
+window.iniciarTourComprasVer = function () {
+  window.iniciarTour(PASSOS_TOUR_COMPRAS_VER);
+};
+
 window.fecharModalCompra = function() {
   window.fecharModal("modal-compra");
   limparFormulario();

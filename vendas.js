@@ -73,6 +73,84 @@ window.iniciarTourVendas = function () {
   window.iniciarTour(PASSOS_TOUR_VENDAS);
 };
 
+// ── Tour dedicado da TELA PRINCIPAL do celular (mostra só os botões de
+// ação; os campos ficam dentro de cada modal). No desktop o "?" do
+// topbar continua chamando iniciarTourVendas() normal.
+const PASSOS_TOUR_VENDAS_PRINCIPAL = [
+  {
+    seletores: [".secao-acoes-mobile"],
+    titulo: "Gerenciamento de Vendas",
+    texto: "Aqui você registra cada venda de café feita. Toque em um dos botões abaixo."
+  },
+  {
+    seletores: ["#btn-abrir-registrar-venda"],
+    titulo: "Registrar Venda",
+    texto: "Toque aqui pra registrar uma venda nova."
+  },
+  {
+    seletores: ["#btn-abrir-ver-vendas"],
+    titulo: "Ver Vendas Registradas",
+    texto: "Toque aqui pra ver, editar ou excluir as vendas que você já registrou."
+  }
+];
+window.iniciarTourVendasPrincipal = function () {
+  window.iniciarTour(PASSOS_TOUR_VENDAS_PRINCIPAL);
+};
+
+// ── Tour dedicado SÓ do modal "Registrar Venda" (celular) ───────────────────
+const PASSOS_TOUR_VENDAS_CADASTRO = [
+  {
+    seletores: ["#modal-venda .modal-box"],
+    titulo: "Registrar Venda",
+    texto: "Aqui você registra uma venda de café feita. Vamos passar pelos campos."
+  },
+  {
+    seletores: ["#moita-vendas"],
+    titulo: "Moita",
+    texto: "De qual moita veio o café vendido, se souber."
+  },
+  {
+    seletores: ["#data-venda"],
+    titulo: "Data da Venda",
+    texto: "O dia em que a venda aconteceu."
+  },
+  {
+    seletores: ["#quantidade-vendida"],
+    titulo: "Quantidade (sacas)",
+    texto: "Quantas sacas foram vendidas."
+  },
+  {
+    seletores: ["#preco-unitario"],
+    titulo: "Preço por Saca",
+    texto: "O valor recebido por cada saca. O sistema calcula o valor total sozinho."
+  },
+  {
+    seletores: ["#btn-salvar-venda"],
+    titulo: "Registrar Venda",
+    texto: "Depois de preencher os campos, toque aqui pra salvar a venda."
+  }
+];
+window.iniciarTourVendasCadastro = function () {
+  window.iniciarTour(PASSOS_TOUR_VENDAS_CADASTRO);
+};
+
+// ── Tour dedicado do modal "Ver Vendas Registradas" (celular) ───────────────
+const PASSOS_TOUR_VENDAS_VER = [
+  {
+    seletores: ["#pesquisa-venda"],
+    titulo: "Buscar Venda",
+    texto: "Use essa busca pra encontrar rápido uma venda já registrada, por moita."
+  },
+  {
+    seletores: ["#lista-vendas"],
+    titulo: "Vendas Registradas",
+    texto: "Aqui aparecem todas as vendas já registradas. Toque numa delas pra editar ou excluir."
+  }
+];
+window.iniciarTourVendasVer = function () {
+  window.iniciarTour(PASSOS_TOUR_VENDAS_VER);
+};
+
 window.fecharModalVenda = function() {
   window.fecharModal("modal-venda");
   limparFormulario();

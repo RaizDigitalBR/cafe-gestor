@@ -36,42 +36,46 @@ window.abrirModal  = id => document.getElementById(id).classList.add("aberto");
 window.fecharModal = id => document.getElementById(id).classList.remove("aberto");
 
 // ── Tour guiado de ajuda (passo a passo) ────────────────────────────────────
-// Página-piloto pra validar o padrão antes de replicar nas outras telas.
-// Cobre o layout desktop (form sempre visível); o layout mobile usa o
-// modal "Cadastrar Despesa" e ainda não tem tour próprio.
+// Cada passo pode listar mais de um seletor: o motor (tour.js) usa o
+// primeiro que estiver REALMENTE visível na tela. Isso cobre tanto o
+// layout desktop (form sempre visível) quanto o modal "Cadastrar Despesa"
+// do celular, que usa outros ids pros mesmos campos. Passos sobre
+// estatísticas/tabela (que só existem no desktop) ficam só com o seletor
+// desktop mesmo: no celular esses passos aparecem centralizados, sem
+// apontar pra nada, o que é aceitável já que são informativos.
 const PASSOS_TOUR_DESPESAS = [
   {
-    seletores: [".card-form-lista"],
+    seletores: [".card-form-lista", "#modal-despesa .modal-box"],
     titulo: "Bem-vindo(a) à página de Despesas",
     texto: "Aqui você registra todo gasto da lavoura: adubo, defensivo, mão de obra e outros. Vamos passar rapidinho pelos campos."
   },
   {
-    seletores: ["#categoria-despesa-desktop"],
+    seletores: ["#categoria-despesa-desktop", "#grupo-categoria-despesa"],
     titulo: "Categoria",
     texto: "Escolha o tipo do gasto: Fertilizante, Defensivo, Herbicidas, Mão de Obra ou Outros. Esse campo é obrigatório."
   },
   {
-    seletores: ["#moita-despesa-desktop"],
+    seletores: ["#moita-despesa-desktop", "#moita-despesa"],
     titulo: "Moita",
     texto: "Só preencha se o gasto foi de uma moita específica. Se for um gasto geral da lavoura, deixe em \"Sem moita específica\"."
   },
   {
-    seletores: ["#descricao-despesa-desktop"],
+    seletores: ["#descricao-despesa-desktop", "#descricao-despesa"],
     titulo: "Descrição",
     texto: "Um texto curto lembrando o que foi o gasto, por exemplo \"Adubo pra moita 3\"."
   },
   {
-    seletores: ["#valor-despesa-desktop"],
+    seletores: ["#valor-despesa-desktop", "#valor-despesa"],
     titulo: "Valor",
     texto: "O valor em reais gasto nessa despesa."
   },
   {
-    seletores: ["#data-despesa-desktop"],
+    seletores: ["#data-despesa-desktop", "#data-despesa"],
     titulo: "Data",
     texto: "O dia em que o gasto aconteceu."
   },
   {
-    seletores: ["#btn-salvar-despesa-desktop"],
+    seletores: ["#btn-salvar-despesa-desktop", "#btn-salvar-despesa"],
     titulo: "Cadastrar Despesa",
     texto: "Depois de preencher os campos, toque aqui pra salvar a despesa."
   },
@@ -98,6 +102,93 @@ const PASSOS_TOUR_DESPESAS = [
 ];
 window.iniciarTourDespesas = function () {
   window.iniciarTour(PASSOS_TOUR_DESPESAS);
+};
+
+// ── Tour dedicado SÓ do modal "Cadastrar Despesa" (celular) ────────────────
+// Diferente do tour de cima : aqui só entram os campos que existem dentro
+// desse modal, nada de estatística/tabela que não tem como aparecer ali.
+const PASSOS_TOUR_DESPESAS_CADASTRO = [
+  {
+    seletores: ["#modal-despesa .modal-box"],
+    titulo: "Cadastrar Despesa",
+    texto: "Aqui você registra um gasto da lavoura: adubo, defensivo, mão de obra e outros. Vamos passar pelos campos."
+  },
+  {
+    seletores: ["#grupo-categoria-despesa"],
+    titulo: "Categoria",
+    texto: "Escolha o tipo do gasto: Fertilizante, Defensivo, Herbicidas, Mão de Obra ou Outros. Esse campo é obrigatório."
+  },
+  {
+    seletores: ["#moita-despesa"],
+    titulo: "Moita",
+    texto: "Só preencha se o gasto foi de uma moita específica. Se for um gasto geral da lavoura, deixe em \"Sem moita específica\"."
+  },
+  {
+    seletores: ["#descricao-despesa"],
+    titulo: "Descrição",
+    texto: "Um texto curto lembrando o que foi o gasto, por exemplo \"Adubo pra moita 3\"."
+  },
+  {
+    seletores: ["#valor-despesa"],
+    titulo: "Valor",
+    texto: "O valor em reais gasto nessa despesa."
+  },
+  {
+    seletores: ["#data-despesa"],
+    titulo: "Data",
+    texto: "O dia em que o gasto aconteceu."
+  },
+  {
+    seletores: ["#btn-salvar-despesa"],
+    titulo: "Cadastrar Despesa",
+    texto: "Depois de preencher os campos, toque aqui pra salvar a despesa."
+  }
+];
+window.iniciarTourDespesasCadastro = function () {
+  window.iniciarTour(PASSOS_TOUR_DESPESAS_CADASTRO);
+};
+
+// ── Tour dedicado do modal "Ver Despesas Registradas" (celular) ────────────
+const PASSOS_TOUR_DESPESAS_VER = [
+  {
+    seletores: ["#pesquisa-despesa"],
+    titulo: "Buscar Despesa",
+    texto: "Use essa busca pra encontrar rápido uma despesa já cadastrada, por categoria, moita ou descrição."
+  },
+  {
+    seletores: ["#lista-despesas"],
+    titulo: "Lista de Despesas",
+    texto: "Aqui aparecem todas as despesas já cadastradas. Toque numa delas pra editar ou excluir."
+  }
+];
+window.iniciarTourDespesasVer = function () {
+  window.iniciarTour(PASSOS_TOUR_DESPESAS_VER);
+};
+
+// ── Tour dedicado da TELA PRINCIPAL do celular (a que abriga os dois
+// modais acima: ela só mostra os dois botões de ação, os campos ficam
+// dentro de cada modal, que já tem seu próprio tour). No desktop o "?"
+// do topbar continua chamando iniciarTourDespesas() normal, porque lá
+// tudo já aparece direto na tela, sem modal.
+const PASSOS_TOUR_DESPESAS_PRINCIPAL = [
+  {
+    seletores: [".secao-acoes-mobile"],
+    titulo: "Gerenciamento de Despesas",
+    texto: "Aqui você controla os gastos da lavoura. Toque em um dos botões abaixo pra cadastrar uma despesa nova ou ver as que já estão registradas."
+  },
+  {
+    seletores: ["#btn-abrir-cadastro-despesa"],
+    titulo: "Cadastrar Despesa",
+    texto: "Toque aqui pra registrar um novo gasto: adubo, defensivo, mão de obra e outros."
+  },
+  {
+    seletores: ["#btn-abrir-ver-despesas"],
+    titulo: "Ver Despesas Registradas",
+    texto: "Toque aqui pra ver, buscar, editar ou excluir as despesas que você já cadastrou."
+  }
+];
+window.iniciarTourDespesasPrincipal = function () {
+  window.iniciarTour(PASSOS_TOUR_DESPESAS_PRINCIPAL);
 };
 
 window.fecharModalDespesa = function() {

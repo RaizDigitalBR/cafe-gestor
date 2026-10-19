@@ -43,6 +43,69 @@ window.iniciarTourCompanheirosTurmas = function () {
   window.iniciarTour(PASSOS_TOUR_COMPANHEIROS_TURMAS);
 };
 
+// ── Tour dedicado da TELA PRINCIPAL do celular (mostra só os botões de
+// ação; os campos ficam dentro de cada modal). No desktop o "?" do
+// topbar continua chamando iniciarTourCompanheirosTurmas() normal.
+const PASSOS_TOUR_COMPANHEIROS_TURMAS_PRINCIPAL = [
+  {
+    seletores: [".secao-acoes-mobile"],
+    titulo: "Gerenciamento de Turmas",
+    texto: "Turmas facilitam registrar trabalho pra várias pessoas de uma vez. Toque em um dos botões abaixo."
+  },
+  {
+    seletores: ["#btn-abrir-criar-turma"],
+    titulo: "Criar Turma",
+    texto: "Toque aqui pra criar uma turma nova."
+  },
+  {
+    seletores: ["#btn-abrir-ver-turmas"],
+    titulo: "Ver Turmas",
+    texto: "Toque aqui pra ver ou excluir as turmas já criadas."
+  }
+];
+window.iniciarTourCompanheirosTurmasPrincipal = function () {
+  window.iniciarTour(PASSOS_TOUR_COMPANHEIROS_TURMAS_PRINCIPAL);
+};
+
+// ── Tour dedicado SÓ do modal "Criar Turma" (celular) ────────────────────────
+const PASSOS_TOUR_COMPANHEIROS_TURMAS_CADASTRO = [
+  {
+    seletores: ["#modal-turma .modal-box"],
+    titulo: "Criar Turma",
+    texto: "Turmas facilitam registrar trabalho pra várias pessoas de uma vez em \"Registrar Trabalho\". Vamos passar pelos campos."
+  },
+  {
+    seletores: ["#nome-turma"],
+    titulo: "Nome da turma",
+    texto: "Um nome pra identificar o grupo, por exemplo \"Turma de Colheita A\"."
+  },
+  {
+    seletores: ["#checkboxes-turma"],
+    titulo: "Selecionar companheiros",
+    texto: "Marque os companheiros (já cadastrados em \"Cadastrar Companheiro\") que fazem parte dessa turma."
+  },
+  {
+    seletores: ["#btn-criar-turma"],
+    titulo: "Criar Turma",
+    texto: "Depois de preencher os campos, toque aqui pra criar a turma."
+  }
+];
+window.iniciarTourCompanheirosTurmasCadastro = function () {
+  window.iniciarTour(PASSOS_TOUR_COMPANHEIROS_TURMAS_CADASTRO);
+};
+
+// ── Tour dedicado do modal "Ver Turmas" (celular) ────────────────────────────
+const PASSOS_TOUR_COMPANHEIROS_TURMAS_VER = [
+  {
+    seletores: ["#lista-turmas"],
+    titulo: "Turmas Cadastradas",
+    texto: "Aqui aparecem as turmas já criadas, com seus membros. Toque numa delas pra editar ou excluir."
+  }
+];
+window.iniciarTourCompanheirosTurmasVer = function () {
+  window.iniciarTour(PASSOS_TOUR_COMPANHEIROS_TURMAS_VER);
+};
+
 // ── Busca (desktop) ────────────────────────────────────────────────────────────
 const pesquisaDesktop = document.getElementById("pesquisa-turma-desktop");
 if (pesquisaDesktop) {

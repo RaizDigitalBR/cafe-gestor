@@ -9,7 +9,7 @@
     <meta name="theme-color" content="#2d4a2b">
     <title>Gerenciamento de Compras</title>
     <link rel="stylesheet" href="style.css?v=1.19">
-    <script type="module" src="compras.js?v=1.4"></script>
+    <script type="module" src="compras.js?v=1.6"></script>
     <script type="module" src="menu.js?v=1.7"></script>
     <script type="module" src="tour.js?v=1.4"></script>
 </head>
@@ -26,7 +26,7 @@
         </div>
         <div class="topbar-mobile-titulo-grupo">
             <h2 class="topbar-mobile-titulo">Gerenciamento de Compras</h2>
-            <button type="button" class="btn-ajuda-topbar" onclick="iniciarTourCompras()" aria-label="Ajuda">?</button>
+            <button type="button" class="btn-ajuda-topbar" onclick="iniciarTourComprasPrincipal()" aria-label="Ajuda">?</button>
         </div>
     </header>
 
@@ -99,8 +99,8 @@
         <!-- Botões antigos : só aparecem no celular. -->
         <section class="secao-acoes-mobile">
             <div class="acoes-principais">
-                <button class="btn-acao" onclick="abrirModal('modal-compra')">🛒 Registrar Compra</button>
-                <button class="btn-acao marrom" onclick="abrirModal('modal-ver-compras')">📋 Ver Compras Registradas</button>
+                <button id="btn-abrir-registrar-compra" class="btn-acao" onclick="abrirModal('modal-compra')">🛒 Registrar Compra</button>
+                <button id="btn-abrir-ver-compras" class="btn-acao marrom" onclick="abrirModal('modal-ver-compras')">📋 Ver Compras Registradas</button>
             </div>
         </section>
 
@@ -172,7 +172,10 @@
     <div class="modal-overlay" id="modal-compra">
         <div class="modal-box">
             <button class="modal-fechar" onclick="fecharModalCompra()">✕</button>
-            <h3 id="titulo-modal-compra">🛒 Registrar Compra</h3>
+            <div class="modal-titulo-grupo">
+                <h3 id="titulo-modal-compra">🛒 Registrar Compra</h3>
+                <button type="button" class="btn-ajuda-modal" onclick="iniciarTourComprasCadastro()" aria-label="Ajuda">?</button>
+            </div>
             <form id="gerenciamento-compras-form">
                 <label for="fornecedor-compra">Fornecedor (de quem comprou):</label>
                 <input type="text" id="fornecedor-compra" name="fornecedor-compra" required><br><br>
@@ -194,7 +197,10 @@
     <div class="modal-overlay" id="modal-ver-compras">
         <div class="modal-box">
             <button class="modal-fechar" onclick="fecharModal('modal-ver-compras')">✕</button>
-            <h3>📋 Compras Registradas</h3>
+            <div class="modal-titulo-grupo">
+                <h3>📋 Compras Registradas</h3>
+                <button type="button" class="btn-ajuda-modal" onclick="iniciarTourComprasVer()" aria-label="Ajuda">?</button>
+            </div>
             <input type="text" id="pesquisa-compra" class="campo-busca" placeholder="Pesquisar por fornecedor" oninput="filtrarCompras()">
             <div id="lista-compras"></div>
         </div>

@@ -953,6 +953,39 @@ button:hover {
     margin-bottom: 1.2rem;
     padding-right: 2rem;
 }
+/* Título + botão "?" dentro de um modal (ex: "Cadastrar Despesa" no
+   celular) : fica reservado um respiro à direita pra não colidir com o
+   "✕" de fechar, que é posicionado absoluto no canto do .modal-box. */
+.modal-titulo-grupo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    padding-right: 2.6rem;
+    margin-bottom: 1.2rem;
+}
+.modal-titulo-grupo h3 {
+    margin-bottom: 0;
+    padding-right: 0;
+}
+.btn-ajuda-modal {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: #e7dfd1;
+    color: #4a3728;
+    border: none;
+    font-weight: bold;
+    font-size: 0.95rem;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+.btn-ajuda-modal:hover {
+    background-color: #ddd2bd;
+}
 .modal-fechar {
     position: absolute;
     top: 1rem;

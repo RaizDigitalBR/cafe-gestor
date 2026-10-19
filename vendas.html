@@ -9,7 +9,7 @@
     <meta name="theme-color" content="#2d4a2b">
     <title>Gerenciamento de Vendas</title>
     <link rel="stylesheet" href="style.css?v=1.19">
-    <script type="module" src="vendas.js?v=1.10"></script>
+    <script type="module" src="vendas.js?v=1.12"></script>
     <script type="module" src="menu.js?v=1.7"></script>
     <script type="module" src="tour.js?v=1.4"></script>
 </head>
@@ -26,7 +26,7 @@
         </div>
         <div class="topbar-mobile-titulo-grupo">
             <h2 class="topbar-mobile-titulo">Gerenciamento de Vendas</h2>
-            <button type="button" class="btn-ajuda-topbar" onclick="iniciarTourVendas()" aria-label="Ajuda">?</button>
+            <button type="button" class="btn-ajuda-topbar" onclick="iniciarTourVendasPrincipal()" aria-label="Ajuda">?</button>
         </div>
     </header>
 
@@ -101,8 +101,8 @@
              deles, sem precisar abrir modal. -->
         <section class="secao-acoes-mobile">
             <div class="acoes-principais">
-                <button class="btn-acao" onclick="abrirModal('modal-venda')">💰 Registrar Venda</button>
-                <button class="btn-acao marrom" onclick="abrirModal('modal-ver-vendas')">📋 Ver Vendas Registradas</button>
+                <button id="btn-abrir-registrar-venda" class="btn-acao" onclick="abrirModal('modal-venda')">💰 Registrar Venda</button>
+                <button id="btn-abrir-ver-vendas" class="btn-acao marrom" onclick="abrirModal('modal-ver-vendas')">📋 Ver Vendas Registradas</button>
             </div>
         </section>
 
@@ -175,7 +175,10 @@
     <div class="modal-overlay" id="modal-venda">
         <div class="modal-box">
             <button class="modal-fechar" onclick="fecharModalVenda()">✕</button>
-            <h3 id="titulo-modal-venda">💰 Registrar Venda</h3>
+            <div class="modal-titulo-grupo">
+                <h3 id="titulo-modal-venda">💰 Registrar Venda</h3>
+                <button type="button" class="btn-ajuda-modal" onclick="iniciarTourVendasCadastro()" aria-label="Ajuda">?</button>
+            </div>
             <form id="gerenciamento-vendas-form">
                 <label for="moita-vendas">Moita:</label>
                 <select id="moita-vendas" name="moita-vendas">
@@ -196,7 +199,10 @@
     <div class="modal-overlay" id="modal-ver-vendas">
         <div class="modal-box">
             <button class="modal-fechar" onclick="fecharModal('modal-ver-vendas')">✕</button>
-            <h3>📋 Vendas Registradas</h3>
+            <div class="modal-titulo-grupo">
+                <h3>📋 Vendas Registradas</h3>
+                <button type="button" class="btn-ajuda-modal" onclick="iniciarTourVendasVer()" aria-label="Ajuda">?</button>
+            </div>
             <input type="text" id="pesquisa-venda" class="campo-busca" placeholder="Pesquisar por moita" oninput="filtrarVendas()">
             <div id="lista-vendas"></div>
         </div>
