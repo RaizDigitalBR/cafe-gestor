@@ -35,6 +35,71 @@ let todasAsDespesas = [];
 window.abrirModal  = id => document.getElementById(id).classList.add("aberto");
 window.fecharModal = id => document.getElementById(id).classList.remove("aberto");
 
+// ── Tour guiado de ajuda (passo a passo) ────────────────────────────────────
+// Página-piloto pra validar o padrão antes de replicar nas outras telas.
+// Cobre o layout desktop (form sempre visível); o layout mobile usa o
+// modal "Cadastrar Despesa" e ainda não tem tour próprio.
+const PASSOS_TOUR_DESPESAS = [
+  {
+    seletores: [".card-form-lista"],
+    titulo: "Bem-vindo(a) à página de Despesas",
+    texto: "Aqui você registra todo gasto da lavoura: adubo, defensivo, mão de obra e outros. Vamos passar rapidinho pelos campos."
+  },
+  {
+    seletores: ["#categoria-despesa-desktop"],
+    titulo: "Categoria",
+    texto: "Escolha o tipo do gasto: Fertilizante, Defensivo, Herbicidas, Mão de Obra ou Outros. Esse campo é obrigatório."
+  },
+  {
+    seletores: ["#moita-despesa-desktop"],
+    titulo: "Moita",
+    texto: "Só preencha se o gasto foi de uma moita específica. Se for um gasto geral da lavoura, deixe em \"Sem moita específica\"."
+  },
+  {
+    seletores: ["#descricao-despesa-desktop"],
+    titulo: "Descrição",
+    texto: "Um texto curto lembrando o que foi o gasto, por exemplo \"Adubo pra moita 3\"."
+  },
+  {
+    seletores: ["#valor-despesa-desktop"],
+    titulo: "Valor",
+    texto: "O valor em reais gasto nessa despesa."
+  },
+  {
+    seletores: ["#data-despesa-desktop"],
+    titulo: "Data",
+    texto: "O dia em que o gasto aconteceu."
+  },
+  {
+    seletores: ["#btn-salvar-despesa-desktop"],
+    titulo: "Cadastrar Despesa",
+    texto: "Depois de preencher os campos, toque aqui pra salvar a despesa."
+  },
+  {
+    seletores: ["#total-despesas-desktop"],
+    titulo: "Despesas Registradas",
+    texto: "Mostra quantas despesas você já tem cadastradas no total."
+  },
+  {
+    seletores: ["#valor-total-despesas-desktop"],
+    titulo: "Valor Total",
+    texto: "A soma de todos os valores de despesas já cadastradas."
+  },
+  {
+    seletores: ["#pesquisa-despesa-desktop"],
+    titulo: "Buscar Despesa",
+    texto: "Use essa busca pra encontrar rápido uma despesa já cadastrada, por categoria, moita ou descrição."
+  },
+  {
+    seletores: [".tabela-dados"],
+    titulo: "Lista de Despesas",
+    texto: "Aqui aparecem todas as despesas já cadastradas, mais recentes primeiro. Use os botões da linha pra editar ou excluir."
+  }
+];
+window.iniciarTourDespesas = function () {
+  window.iniciarTour(PASSOS_TOUR_DESPESAS);
+};
+
 window.fecharModalDespesa = function() {
   window.fecharModal("modal-despesa");
   limparFormulario();

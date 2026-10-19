@@ -16,6 +16,33 @@ document.querySelectorAll(".modal-overlay").forEach(m => {
   m.addEventListener("click", e => { if (e.target === m) m.classList.remove("aberto"); });
 });
 
+// ── Tour guiado de ajuda (passo a passo) ────────────────────────────────────
+const PASSOS_TOUR_COMPANHEIROS_TURMAS = [
+  {
+    seletores: [".card-form-lista"],
+    titulo: "Bem-vindo(a) à página de Turmas",
+    texto: "Turmas facilitam registrar trabalho pra várias pessoas de uma vez em \"Registrar Trabalho\"."
+  },
+  {
+    seletores: ["#nome-turma-desktop", "#nome-turma"],
+    titulo: "Nome da turma",
+    texto: "Um nome pra identificar o grupo, por exemplo \"Turma de Colheita A\"."
+  },
+  {
+    seletores: ["#checkboxes-turma-desktop", "#checkboxes-turma"],
+    titulo: "Selecionar companheiros",
+    texto: "Marque os companheiros (já cadastrados em \"Cadastrar Companheiro\") que fazem parte dessa turma."
+  },
+  {
+    seletores: [".tabela-dados", "#lista-turmas"],
+    titulo: "Turmas Cadastradas",
+    texto: "Aqui aparecem as turmas já criadas, com seus membros."
+  }
+];
+window.iniciarTourCompanheirosTurmas = function () {
+  window.iniciarTour(PASSOS_TOUR_COMPANHEIROS_TURMAS);
+};
+
 // ── Busca (desktop) ────────────────────────────────────────────────────────────
 const pesquisaDesktop = document.getElementById("pesquisa-turma-desktop");
 if (pesquisaDesktop) {

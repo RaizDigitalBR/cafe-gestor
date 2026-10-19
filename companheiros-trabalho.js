@@ -12,6 +12,58 @@ let todasAsTurmas = [];
 // que a pessoa já preencheu se ela mudar a seleção de companheiros depois.
 const quantidadesProducaoDigitadas = new Map();
 
+// ── Tour guiado de ajuda (passo a passo) ────────────────────────────────────
+const PASSOS_TOUR_COMPANHEIROS_TRABALHO = [
+  {
+    seletores: ["#select-turma"],
+    titulo: "Bem-vindo(a) à página de Registrar Trabalho",
+    texto: "Aqui você registra o trabalho feito pelos seus companheiros."
+  },
+  {
+    seletores: ["#select-turma"],
+    titulo: "Filtrar por turma",
+    texto: "Ajuda a achar rápido quem você quer marcar, em vez de rolar a lista inteira."
+  },
+  {
+    seletores: ["#pesquisa-selecao"],
+    titulo: "Pesquisar companheiro",
+    texto: "Pesquise pelo nome do companheiro pra marcar mais rápido."
+  },
+  {
+    seletores: ["#moita-trabalho"],
+    titulo: "Moita",
+    texto: "Em qual moita o trabalho foi feito."
+  },
+  {
+    seletores: ["#data-trabalho"],
+    titulo: "Data",
+    texto: "O dia em que o trabalho foi feito."
+  },
+  {
+    seletores: ["#servico-trabalho"],
+    titulo: "Serviço realizado",
+    texto: "O tipo de serviço, por exemplo colheita ou roçagem."
+  },
+  {
+    seletores: ["#tipo-pagamento"],
+    titulo: "Tipo de pagamento",
+    texto: "Como esse trabalho vai ser pago: diária (valor fixo) ou produção (por quantidade)."
+  },
+  {
+    seletores: ["#valor-trabalho", "#valor-producao"],
+    titulo: "Valor",
+    texto: "O valor combinado, ou o valor por unidade produzida."
+  },
+  {
+    seletores: ["#status-pagamento", "#status-producao"],
+    titulo: "Status",
+    texto: "Se já foi pago ou ainda está pendente. Pagamentos pendentes aparecem depois na página \"Monitoramento de Pagamentos\"."
+  }
+];
+window.iniciarTourCompanheirosTrabalho = function () {
+  window.iniciarTour(PASSOS_TOUR_COMPANHEIROS_TRABALHO);
+};
+
 // ── Tipo de pagamento ─────────────────────────────────────────────────────────
 window.alternarTipo = function () {
   const tipo = document.getElementById("tipo-pagamento").value;

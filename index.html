@@ -10,8 +10,9 @@
 <meta name="theme-color" content="#2d4a2b">
     <title>Painel de Gestão de Café</title>
 
-    <link rel="stylesheet" href="style.css?v=1.10">
-    <script type="module" src="script.js?v=1.9" defer></script>
+    <link rel="stylesheet" href="style.css?v=1.11">
+    <script type="module" src="script.js?v=1.10" defer></script>
+    <script type="module" src="tour.js?v=1.1"></script>
 </head>
 
 <body class="tem-sidebar">
@@ -85,7 +86,10 @@
             <span>Complete seu cadastro para liberar todos os recursos</span>
         </div>
         <div class="topbar-linha">
-            <h2 class="topbar-titulo">Dashboard</h2>
+            <div class="topbar-titulo-grupo">
+                <h2 class="topbar-titulo">Dashboard</h2>
+                <button type="button" class="btn-ajuda-topbar" onclick="iniciarTourDashboard()" aria-label="Ajuda">?</button>
+            </div>
             <div class="topbar-usuario">
                 <div class="avatar-usuario" id="avatarUsuarioDesktop">U</div>
                 <span id="nomeUsuarioDesktop">Carregando...</span>

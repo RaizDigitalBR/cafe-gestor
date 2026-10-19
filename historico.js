@@ -5,6 +5,47 @@ import {
   getDocs
 } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
 
+// ── Modal de ajuda (essa página não tinha modal nenhum antes) ──────────────
+window.abrirModal  = id => document.getElementById(id).classList.add("aberto");
+window.fecharModal = id => document.getElementById(id).classList.remove("aberto");
+
+// ── Tour guiado de ajuda (passo a passo) ────────────────────────────────────
+const PASSOS_TOUR_HISTORICO = [
+  {
+    seletores: [".filtros-historico", "#pesquisa-historico"],
+    titulo: "Bem-vindo(a) ao Histórico Geral",
+    texto: "Essa página junta tudo que você já registrou em Vendas, Despesas, Colheita e Compras, numa lista só, por ordem de data. Exclusiva do plano completo."
+  },
+  {
+    seletores: ["#pesquisa-historico"],
+    titulo: "Buscar",
+    texto: "Use essa busca pra procurar por descrição, moita, categoria ou tipo."
+  },
+  {
+    seletores: ["#filtro-ano"],
+    titulo: "Ano",
+    texto: "Filtra os lançamentos por ano."
+  },
+  {
+    seletores: ["#filtro-mes"],
+    titulo: "Mês",
+    texto: "Filtra os lançamentos por mês."
+  },
+  {
+    seletores: ["#filtro-tipo"],
+    titulo: "Categoria / Tipo",
+    texto: "Filtra por Despesa, Venda, Colheita ou Trabalho, pra achar um lançamento específico mais rápido."
+  },
+  {
+    seletores: ["#lista-historico"],
+    titulo: "Movimentações",
+    texto: "Aqui aparece tudo, agrupado por ano e mês. Toque num ano ou mês pra abrir e ver os lançamentos."
+  }
+];
+window.iniciarTourHistorico = function () {
+  window.iniciarTour(PASSOS_TOUR_HISTORICO);
+};
+
 // ── Sidebar desktop: item expansível "Companheiros/Turmas" ─────────────────
 window.alternarSubmenuSidebar = function (btn) {
   const item = btn.closest(".sidebar-item-expansivel");

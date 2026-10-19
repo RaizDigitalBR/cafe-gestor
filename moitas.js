@@ -35,6 +35,48 @@ let relatorioCarregado = false;
 window.abrirModal  = id => document.getElementById(id).classList.add("aberto");
 window.fecharModal = id => document.getElementById(id).classList.remove("aberto");
 
+// ── Tour guiado de ajuda (passo a passo) ────────────────────────────────────
+const PASSOS_TOUR_MOITAS = [
+  {
+    seletores: [".card-form-lista"],
+    titulo: "Bem-vindo(a) à página de Moitas",
+    texto: "Aqui você cadastra as moitas (talhões/lotes de café) da sua lavoura. Depois de cadastrar, as outras páginas deixam você ligar lançamentos a cada moita."
+  },
+  {
+    seletores: ["#nome-moita-desktop", "#nome-moita"],
+    titulo: "Nome da Moita",
+    texto: "Um nome pra você identificar esse talhão/área, por exemplo \"Moita 1\" ou \"Fundo do terreno\"."
+  },
+  {
+    seletores: ["#area-moita-desktop", "#area-moita"],
+    titulo: "Área (hectares)",
+    texto: "O tamanho dessa moita em hectares."
+  },
+  {
+    seletores: ["#quantidade-de-pes-desktop", "#quantidade-de-pes"],
+    titulo: "Quantidade de Pés",
+    texto: "Quantos pés de café tem nessa moita."
+  },
+  {
+    seletores: ["#tipo-de-cafe-desktop", "#tipo-de-cafe"],
+    titulo: "Tipo de Café",
+    texto: "A variedade plantada nessa moita."
+  },
+  {
+    seletores: [".linha-acao-relatorio", ".btn-acao.teal"],
+    titulo: "Relatório de Produção",
+    texto: "Toque aqui pra ver produção e financeiro por moita."
+  },
+  {
+    seletores: [".tabela-dados", "#lista-moitas"],
+    titulo: "Moitas Cadastradas",
+    texto: "Depois de cadastrar, as outras páginas (Despesas, Colheita, Vendas) deixam você escolher essa moita pra ligar o lançamento a ela."
+  }
+];
+window.iniciarTourMoitas = function () {
+  window.iniciarTour(PASSOS_TOUR_MOITAS);
+};
+
 window.fecharModalMoita = function() {
   window.fecharModal("modal-moita");
   limparFormulario();

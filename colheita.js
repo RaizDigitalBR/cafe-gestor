@@ -35,6 +35,38 @@ let todasAsColheitas = [];
 window.abrirModal  = id => document.getElementById(id).classList.add("aberto");
 window.fecharModal = id => document.getElementById(id).classList.remove("aberto");
 
+// ── Tour guiado de ajuda (passo a passo) ────────────────────────────────────
+const PASSOS_TOUR_COLHEITA = [
+  {
+    seletores: [".card-form-lista"],
+    titulo: "Bem-vindo(a) à página de Colheita",
+    texto: "Aqui você registra cada colheita feita na lavoura."
+  },
+  {
+    seletores: ["#moita-colheita-desktop", "#moita-colheita"],
+    titulo: "Moita",
+    texto: "Escolha de qual moita veio essa colheita. Cadastre moitas primeiro na página Moitas se a lista estiver vazia."
+  },
+  {
+    seletores: ["#data-colheita-desktop", "#data-colheita"],
+    titulo: "Data da Colheita",
+    texto: "O dia em que a colheita foi feita."
+  },
+  {
+    seletores: ["#quantidade-colhida-desktop", "#quantidade-colhida"],
+    titulo: "Quantidade Colhida (kg)",
+    texto: "Quanto foi colhido, em quilos."
+  },
+  {
+    seletores: [".tabela-dados", "#lista-colheitas"],
+    titulo: "Colheitas Registradas",
+    texto: "Aqui aparecem todas as colheitas já registradas. Use os botões da linha pra editar ou excluir."
+  }
+];
+window.iniciarTourColheita = function () {
+  window.iniciarTour(PASSOS_TOUR_COLHEITA);
+};
+
 window.fecharModalColheita = function() {
   window.fecharModal("modal-colheita");
   limparFormulario();

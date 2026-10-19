@@ -8,9 +8,10 @@
     <link rel="apple-touch-icon" href="./img/logo-192.png">
     <meta name="theme-color" content="#2d4a2b">
     <title>Gerenciamento de Despesas</title>
-    <link rel="stylesheet" href="style.css?v=1.10">
-    <script type="module" src="despesas.js?v=1.9"></script>
+    <link rel="stylesheet" href="style.css?v=1.11">
+    <script type="module" src="despesas.js?v=1.10"></script>
     <script type="module" src="menu.js?v=1.7"></script>
+    <script type="module" src="tour.js?v=1.1"></script>
 </head>
 <body class="tem-sidebar">
     <header class="topbar-mobile">
@@ -79,7 +80,10 @@
             <span>Complete seu cadastro para liberar todos os recursos</span>
         </div>
         <div class="topbar-linha">
-            <h2 class="topbar-titulo">Gerenciamento de Despesas</h2>
+            <div class="topbar-titulo-grupo">
+                <h2 class="topbar-titulo">Gerenciamento de Despesas</h2>
+                <button type="button" class="btn-ajuda-topbar" onclick="iniciarTourDespesas()" aria-label="Ajuda">?</button>
+            </div>
             <div class="topbar-usuario">
                 <div class="avatar-usuario" id="avatarUsuarioDesktop">U</div>
                 <span id="nomeUsuarioDesktop">Carregando...</span>
@@ -103,12 +107,6 @@
                 <h3 id="titulo-form-despesa-desktop">Cadastrar Despesa</h3>
                 <form id="form-despesa-desktop" class="form-inline-lista">
                     <div class="campo-form-lista">
-                        <label for="moita-despesa-desktop">Moita</label>
-                        <select id="moita-despesa-desktop">
-                            <option value="">Sem moita específica</option>
-                        </select>
-                    </div>
-                    <div class="campo-form-lista">
                         <label for="categoria-despesa-desktop">Categoria</label>
                         <select id="categoria-despesa-desktop" required>
                             <option value="Fertilizante">Fertilizantes</option>
@@ -116,6 +114,12 @@
                             <option value="Herbicidas">Herbicidas</option>
                             <option value="Mão de Obra">Mão de Obra</option>
                             <option value="Outros">Outros</option>
+                        </select>
+                    </div>
+                    <div class="campo-form-lista">
+                        <label for="moita-despesa-desktop">Moita</label>
+                        <select id="moita-despesa-desktop">
+                            <option value="">Sem moita específica</option>
                         </select>
                     </div>
                     <div class="campo-form-lista">
@@ -174,10 +178,6 @@
             <button class="modal-fechar" onclick="fecharModalDespesa()">✕</button>
             <h3 id="titulo-modal-despesa">💸 Cadastrar Despesa</h3>
             <form id="gerenciamento-despesas-form">
-                <label for="moita-despesa">Moita:</label>
-                <select id="moita-despesa" name="moita-despesa">
-                    <option value="">Sem moita específica</option>
-                </select><br><br>
                 <h3>Categoria da Despesa</h3>
                 <input type="radio" id="categoria-fertilizante" name="categoria-despesa" value="Fertilizante" required>
                 <label for="categoria-fertilizante">Fertilizantes</label><br>
@@ -189,6 +189,10 @@
                 <label for="categoria-mao-de-obra">Mão de Obra</label><br>
                 <input type="radio" id="categoria-outros" name="categoria-despesa" value="Outros">
                 <label for="categoria-outros">Outros</label><br><br>
+                <label for="moita-despesa">Moita:</label>
+                <select id="moita-despesa" name="moita-despesa">
+                    <option value="">Sem moita específica</option>
+                </select><br><br>
                 <div>
                     <label for="descricao-despesa">Descrição:</label><br>
                     <input type="text" id="descricao-despesa" name="descricao-despesa"><br><br>

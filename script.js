@@ -12,6 +12,48 @@ import {
 const botaoDetalhes = document.getElementById("toggle-detalhes-despesas");
 const detalhesDespesas = document.getElementById("detalhes-despesas");
 
+// ── Tour guiado de ajuda (passo a passo) ────────────────────────────────────
+const PASSOS_TOUR_DASHBOARD = [
+  {
+    seletores: [".display-painel"],
+    titulo: "Bem-vindo(a) ao Dashboard",
+    texto: "Aqui você vê o resumo geral da sua lavoura. Esses números atualizam sozinhos conforme você vai cadastrando em cada página do menu lateral."
+  },
+  {
+    seletores: ["#ganho-bruto"],
+    titulo: "Ganho Bruto",
+    texto: "Soma de tudo que você registrou em Vendas."
+  },
+  {
+    seletores: ["#gasto-bruto"],
+    titulo: "Gasto Bruto",
+    texto: "Soma de tudo que você registrou em Despesas. Toque em \"Detalhes\" pra ver por categoria."
+  },
+  {
+    seletores: ["#lucro-total"],
+    titulo: "Lucro",
+    texto: "Ganho Bruto menos Gasto Bruto."
+  },
+  {
+    seletores: ["#total-colheita"],
+    titulo: "Total de Colheita",
+    texto: "Soma de tudo que você registrou em Colheita, em kg e em sacas."
+  },
+  {
+    seletores: ["#pendente-companheiros"],
+    titulo: "Pendente de Companheiros",
+    texto: "Quanto você ainda deve de pagamento pros companheiros que trabalharam com você."
+  },
+  {
+    seletores: ["#total-moitas"],
+    titulo: "Moitas Cadastradas",
+    texto: "Quantas moitas (talhões/lotes de café) você já cadastrou na página Moitas."
+  }
+];
+window.iniciarTourDashboard = function () {
+  window.iniciarTour(PASSOS_TOUR_DASHBOARD);
+};
+
 function formatarMoeda(valor) {
   return Number(valor || 0).toLocaleString("pt-BR", {
     style: "currency",

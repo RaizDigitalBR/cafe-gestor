@@ -36,6 +36,43 @@ let todasAsVendas = [];
 window.abrirModal  = id => document.getElementById(id).classList.add("aberto");
 window.fecharModal = id => document.getElementById(id).classList.remove("aberto");
 
+// ── Tour guiado de ajuda (passo a passo) ────────────────────────────────────
+const PASSOS_TOUR_VENDAS = [
+  {
+    seletores: [".card-form-lista"],
+    titulo: "Bem-vindo(a) à página de Vendas",
+    texto: "Aqui você registra cada venda de café feita."
+  },
+  {
+    seletores: ["#moita-vendas-desktop", "#moita-vendas"],
+    titulo: "Moita",
+    texto: "De qual moita veio o café vendido, se souber."
+  },
+  {
+    seletores: ["#data-venda-desktop", "#data-venda"],
+    titulo: "Data da Venda",
+    texto: "O dia em que a venda aconteceu."
+  },
+  {
+    seletores: ["#quantidade-vendida-desktop", "#quantidade-vendida"],
+    titulo: "Quantidade (sacas)",
+    texto: "Quantas sacas foram vendidas."
+  },
+  {
+    seletores: ["#preco-unitario-desktop", "#preco-unitario"],
+    titulo: "Preço por Saca",
+    texto: "O valor recebido por cada saca. O sistema calcula o valor total sozinho."
+  },
+  {
+    seletores: [".tabela-dados", "#lista-vendas"],
+    titulo: "Vendas Registradas",
+    texto: "Aqui aparecem todas as vendas já registradas. Use os botões da linha pra editar ou excluir."
+  }
+];
+window.iniciarTourVendas = function () {
+  window.iniciarTour(PASSOS_TOUR_VENDAS);
+};
+
 window.fecharModalVenda = function() {
   window.fecharModal("modal-venda");
   limparFormulario();

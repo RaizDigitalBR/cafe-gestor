@@ -16,6 +16,33 @@ document.querySelectorAll(".modal-overlay").forEach(m => {
   m.addEventListener("click", e => { if (e.target === m) m.classList.remove("aberto"); });
 });
 
+// ── Tour guiado de ajuda (passo a passo) ────────────────────────────────────
+const PASSOS_TOUR_COMPANHEIROS_CADASTRO = [
+  {
+    seletores: [".card-form-lista"],
+    titulo: "Bem-vindo(a) à página de Cadastrar Companheiro",
+    texto: "Aqui você cadastra as pessoas que trabalham com você na lavoura."
+  },
+  {
+    seletores: ["#nome-companheiro-desktop", "#nome-companheiro"],
+    titulo: "Nome",
+    texto: "O nome da pessoa que trabalha com você."
+  },
+  {
+    seletores: ["#pix-companheiro-desktop", "#pix-companheiro"],
+    titulo: "Chave Pix",
+    texto: "Opcional, facilita na hora de registrar o pagamento depois."
+  },
+  {
+    seletores: [".tabela-dados", "#lista-companheiros"],
+    titulo: "Companheiros Cadastrados",
+    texto: "Depois de cadastrado, esse companheiro pode ser colocado em Turmas e ter trabalho registrado em \"Registrar Trabalho\"."
+  }
+];
+window.iniciarTourCompanheirosCadastro = function () {
+  window.iniciarTour(PASSOS_TOUR_COMPANHEIROS_CADASTRO);
+};
+
 // ── Busca ─────────────────────────────────────────────────────────────────────
 window.filtrarCompanheiros = function () {
   const termo = document.getElementById("pesquisa-companheiro").value.trim().toLowerCase();

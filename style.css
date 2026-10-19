@@ -1690,6 +1690,125 @@ input.campo-busca[type="text"] {
         color: #8fd9c9;
     }
 
+    /* Botão "?" de ajuda ao lado do título de cada página : abre um modal
+       explicando rapidinho pra que serve cada campo/opção daquela tela. */
+    .btn-ajuda-topbar {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.15);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        font-weight: bold;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: 0.2s ease;
+        flex-shrink: 0;
+    }
+    .btn-ajuda-topbar:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+    .modal-ajuda-lista {
+        text-align: left;
+        margin: 0.8rem 0;
+        padding-left: 1.2rem;
+    }
+    .modal-ajuda-lista li {
+        margin-bottom: 0.6rem;
+        line-height: 1.4;
+    }
+
+    /* ── Tour guiado de ajuda (passo a passo, estilo spotlight) ──────────── */
+    .tour-overlay-fundo {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        z-index: 9000;
+        display: none;
+    }
+    .tour-overlay-fundo.ativo {
+        display: block;
+    }
+    .tour-destaque {
+        position: fixed;
+        z-index: 9001;
+        pointer-events: none;
+        border-radius: 10px;
+        box-shadow: 0 0 0 4px #e8a33d, 0 0 0 9999px rgba(0, 0, 0, 0.55);
+        transition: top 0.25s ease, left 0.25s ease, width 0.25s ease, height 0.25s ease;
+        display: none;
+    }
+    .tour-popup {
+        position: fixed;
+        z-index: 9002;
+        background: #fff;
+        color: #222;
+        border-radius: 10px;
+        padding: 1rem 1.1rem;
+        width: 280px;
+        max-width: calc(100vw - 2rem);
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+        font-size: 0.92rem;
+        line-height: 1.45;
+        transition: top 0.25s ease, left 0.25s ease;
+    }
+    .tour-popup h4 {
+        margin: 0 0.6rem 0.4rem 0;
+        font-size: 1rem;
+        color: #2d4a2b;
+    }
+    .tour-popup p {
+        margin: 0 0 0.9rem;
+    }
+    .tour-popup-rodape {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.6rem;
+    }
+    .tour-contador {
+        font-size: 0.78rem;
+        color: #888;
+        white-space: nowrap;
+    }
+    .tour-botoes {
+        display: flex;
+        gap: 0.5rem;
+    }
+    .tour-botoes button {
+        border: none;
+        border-radius: 6px;
+        padding: 0.35rem 0.8rem;
+        font-size: 0.85rem;
+        cursor: pointer;
+    }
+    .tour-btn-anterior {
+        background: #eee;
+        color: #444;
+    }
+    .tour-btn-anterior:disabled {
+        opacity: 0.5;
+        cursor: default;
+    }
+    .tour-btn-proximo {
+        background: #2d4a2b;
+        color: #fff;
+    }
+    .tour-fechar-x {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.6rem;
+        border: none;
+        background: none;
+        font-size: 1rem;
+        cursor: pointer;
+        color: #999;
+        line-height: 1;
+    }
+
     .topbar-usuario {
         display: flex;
         align-items: center;

@@ -34,6 +34,38 @@ let todosOsLotes = [];
 window.abrirModal  = id => document.getElementById(id).classList.add("aberto");
 window.fecharModal = id => document.getElementById(id).classList.remove("aberto");
 
+// ── Tour guiado de ajuda (passo a passo) ────────────────────────────────────
+const PASSOS_TOUR_ESTOQUE = [
+  {
+    seletores: [".card-form-lista"],
+    titulo: "Bem-vindo(a) à página de Estoque",
+    texto: "Aqui você cadastra lotes de café guardado. Lotes criados a partir de uma compra aparecem marcados com a tag \"via compra\"."
+  },
+  {
+    seletores: ["#nome-lote-desktop", "#nome-lote"],
+    titulo: "Identificação do Lote",
+    texto: "Um nome pra identificar esse lote de café guardado."
+  },
+  {
+    seletores: ["#quantidade-lote-desktop", "#quantidade-lote"],
+    titulo: "Quantidade (sacas)",
+    texto: "Quantas sacas tem nesse lote."
+  },
+  {
+    seletores: ["#anotacoes-lote-desktop", "#anotacoes-lote"],
+    titulo: "Anotações",
+    texto: "Espaço opcional pra peneira, qualidade, safra, etc."
+  },
+  {
+    seletores: [".tabela-dados", "#lista-estoque"],
+    titulo: "Lotes em Estoque",
+    texto: "Aqui aparecem todos os lotes cadastrados. Use os botões da linha pra editar ou excluir."
+  }
+];
+window.iniciarTourEstoque = function () {
+  window.iniciarTour(PASSOS_TOUR_ESTOQUE);
+};
+
 window.fecharModalLote = function() {
   window.fecharModal("modal-lote");
   limparFormulario();

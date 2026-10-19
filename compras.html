@@ -8,9 +8,10 @@
     <link rel="apple-touch-icon" href="./img/logo-192.png">
     <meta name="theme-color" content="#2d4a2b">
     <title>Gerenciamento de Compras</title>
-    <link rel="stylesheet" href="style.css?v=1.10">
-    <script type="module" src="compras.js?v=1.3"></script>
+    <link rel="stylesheet" href="style.css?v=1.11">
+    <script type="module" src="compras.js?v=1.4"></script>
     <script type="module" src="menu.js?v=1.7"></script>
+    <script type="module" src="tour.js?v=1.1"></script>
 </head>
 <body class="tem-sidebar">
     <header class="topbar-mobile">
@@ -79,7 +80,10 @@
             <span>Complete seu cadastro para liberar todos os recursos</span>
         </div>
         <div class="topbar-linha">
-            <h2 class="topbar-titulo">Gerenciamento de Compras</h2>
+            <div class="topbar-titulo-grupo">
+                <h2 class="topbar-titulo">Gerenciamento de Compras</h2>
+                <button type="button" class="btn-ajuda-topbar" onclick="iniciarTourCompras()" aria-label="Ajuda">?</button>
+            </div>
             <div class="topbar-usuario">
                 <div class="avatar-usuario" id="avatarUsuarioDesktop">U</div>
                 <span id="nomeUsuarioDesktop">Carregando...</span>
@@ -192,5 +196,6 @@
             <div id="lista-compras"></div>
         </div>
     </div>
+
 </body>
 </html>

@@ -5,6 +5,42 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
 import { fmt, fmtBR, hoje, lancarDespesa, verificarPlanoCompleto } from "./companheiros-shared.js";
 
+// ── Modal de ajuda (essa página não tinha modal nenhum antes) ──────────────
+window.abrirModal  = id => document.getElementById(id).classList.add("aberto");
+window.fecharModal = id => document.getElementById(id).classList.remove("aberto");
+
+// ── Tour guiado de ajuda (passo a passo) ────────────────────────────────────
+const PASSOS_TOUR_COMPANHEIROS_PAGAMENTOS = [
+  {
+    seletores: [".stats-lista"],
+    titulo: "Bem-vindo(a) ao Monitoramento de Pagamentos",
+    texto: "Essa página mostra os trabalhos registrados em \"Registrar Trabalho\" que ainda estão pendentes de pagamento, e os que já foram pagos."
+  },
+  {
+    seletores: ["#total-pendente"],
+    titulo: "Total pendente",
+    texto: "A soma de tudo que ainda está pendente de pagamento."
+  },
+  {
+    seletores: ["#total-pago"],
+    titulo: "Total pago",
+    texto: "A soma de tudo que já foi pago."
+  },
+  {
+    seletores: ["#pesquisa-pendentes"],
+    titulo: "Pendentes de Pagamento",
+    texto: "Use a busca por nome pra achar rápido um companheiro específico."
+  },
+  {
+    seletores: ["#pesquisa-pagos"],
+    titulo: "Pagamentos Realizados",
+    texto: "Pra marcar um pagamento como feito, abra o trabalho pendente e mude o status."
+  }
+];
+window.iniciarTourCompanheirosPagamentos = function () {
+  window.iniciarTour(PASSOS_TOUR_COMPANHEIROS_PAGAMENTOS);
+};
+
 let usuarioAtual     = null;
 let todosOsTrabalhos = [];
 

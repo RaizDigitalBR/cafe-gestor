@@ -33,6 +33,48 @@ let todasAsCompras = [];
 window.abrirModal  = id => document.getElementById(id).classList.add("aberto");
 window.fecharModal = id => document.getElementById(id).classList.remove("aberto");
 
+// ── Tour guiado de ajuda (passo a passo) ────────────────────────────────────
+const PASSOS_TOUR_COMPRAS = [
+  {
+    seletores: [".card-form-lista"],
+    titulo: "Bem-vindo(a) à página de Compras",
+    texto: "Aqui você registra compras de café de terceiros. Toda compra gera automaticamente um lote correspondente no Estoque."
+  },
+  {
+    seletores: ["#fornecedor-compra-desktop", "#fornecedor-compra"],
+    titulo: "Fornecedor",
+    texto: "De quem você comprou."
+  },
+  {
+    seletores: ["#data-compra-desktop", "#data-compra"],
+    titulo: "Data da Compra",
+    texto: "O dia da compra."
+  },
+  {
+    seletores: ["#quantidade-comprada-desktop", "#quantidade-comprada"],
+    titulo: "Quantidade (sacas)",
+    texto: "Quantas sacas foram compradas."
+  },
+  {
+    seletores: ["#preco-unitario-compra-desktop", "#preco-unitario-compra"],
+    titulo: "Preço por Saca",
+    texto: "O valor pago por cada saca."
+  },
+  {
+    seletores: ["#anotacoes-compra-desktop", "#anotacoes-compra"],
+    titulo: "Anotações",
+    texto: "Espaço opcional pra detalhes como peneira ou qualidade."
+  },
+  {
+    seletores: [".tabela-dados", "#lista-compras"],
+    titulo: "Compras Registradas",
+    texto: "Editar uma compra atualiza só o registro da compra, não o lote já gerado no Estoque."
+  }
+];
+window.iniciarTourCompras = function () {
+  window.iniciarTour(PASSOS_TOUR_COMPRAS);
+};
+
 window.fecharModalCompra = function() {
   window.fecharModal("modal-compra");
   limparFormulario();
