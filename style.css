@@ -1655,7 +1655,9 @@ input.campo-busca[type="text"] {
     background: #fff;
     color: #222;
     border-radius: 10px;
-    padding: 1.8rem 1.1rem 1rem;
+    /* padding-top bem maior que a altura do X, de propósito: garante que
+       o título NUNCA encosta nele, não importa quantas linhas quebrar. */
+    padding: 2.4rem 1.1rem 1rem;
     width: 280px;
     max-width: calc(100vw - 2rem);
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
@@ -1705,15 +1707,24 @@ input.campo-busca[type="text"] {
     background: #2d4a2b;
     color: #fff;
 }
+/* Canto superior direito de verdade, encostado na borda do card : um
+   círculo visível, bem maior que antes, pra não ter como passar
+   despercebido se a mudança pegou ou não. */
 .tour-fechar-x {
     position: absolute;
     top: 0.5rem;
-    right: 0.6rem;
+    right: 0.5rem;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
-    background: none;
-    font-size: 1rem;
+    border-radius: 50%;
+    background: #eee;
+    font-size: 1.1rem;
     cursor: pointer;
-    color: #999;
+    color: #444;
     line-height: 1;
 }
 
